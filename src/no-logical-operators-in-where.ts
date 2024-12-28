@@ -7,12 +7,14 @@ const logicalOperatorsRule: TSESLint.RuleModule<MessageIds> = {
   meta: {
     type: "problem",
     docs: {
-      description: "TODO",
-      url: "https://github.com/drizzle-team/eslint-plugin-drizzle",
+      description:
+        "Enforce that the caller use functions provided by Drizzle (eg: `and`, `or`) instead of logical operators (eg: `&&`, `||`, `>`, `==`)",
+      url: "https://orm.drizzle.team/docs/operators",
     },
     fixable: "code",
     messages: {
-      noLogicalOperatorsInWhere: "TODO",
+      noLogicalOperatorsInWhere:
+        "Avoid using plain logical operators in `where` clause, please see https://orm.drizzle.team/docs/operators",
     },
     schema: [],
   },
