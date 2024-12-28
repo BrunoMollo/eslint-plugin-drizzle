@@ -1,7 +1,7 @@
 // @ts-ignore
 import { RuleTester } from "@typescript-eslint/rule-tester";
 
-import myRule from "../src/avoid-logical-operators-in-where";
+import myRule from "../src/no-logical-operators-in-where";
 
 const parserResolver = require.resolve("@typescript-eslint/parser");
 
@@ -24,44 +24,44 @@ ruleTester.run("my-rule", myRule, {
   invalid: [
     {
       code: "db.delete.where({} && {})",
-      errors: [{ messageId: "avoidLogicalOperatorsInWhere" }],
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
     },
     {
       code: "db.delete.where({} || {})",
-      errors: [{ messageId: "avoidLogicalOperatorsInWhere" }],
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
     },
     {
       code: "db.delete.where({} & {})",
-      errors: [{ messageId: "avoidLogicalOperatorsInWhere" }],
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
     },
     {
       code: "db.delete.where({} | {})",
-      errors: [{ messageId: "avoidLogicalOperatorsInWhere" }],
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
     },
 
     {
       code: "db.select().from(t_somehting).where({} && {})",
-      errors: [{ messageId: "avoidLogicalOperatorsInWhere" }],
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
     },
     {
       code: "db.select().from(t_other_thing).where({} || {})",
-      errors: [{ messageId: "avoidLogicalOperatorsInWhere" }],
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
     },
     {
       code: "db.select().from(t_other_thing).where({} & {})",
-      errors: [{ messageId: "avoidLogicalOperatorsInWhere" }],
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
     },
     {
       code: "db.select().from(t_stored_stuff).where({} | {})",
-      errors: [{ messageId: "avoidLogicalOperatorsInWhere" }],
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
     },
     {
       code: "ctx.select().from(t_foo).where(eq(t_foo.id, id) && eq(t_foo.date, date))",
-      errors: [{ messageId: "avoidLogicalOperatorsInWhere" }],
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
     },
     {
       code: "ctx.select().from(t_foo).innerJoin(t_bar, eq(t_foo.id, t_bar.foo_id)).where(eq(t_foo.id, id) && eq(t_foo.date, date))",
-      errors: [{ messageId: "avoidLogicalOperatorsInWhere" }],
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
     },
   ],
 });

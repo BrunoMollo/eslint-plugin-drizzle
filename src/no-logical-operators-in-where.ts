@@ -1,6 +1,6 @@
 import type { TSESLint } from "@typescript-eslint/utils";
 
-type MessageIds = "avoidLogicalOperatorsInWhere";
+type MessageIds = "noLogicalOperatorsInWhere";
 
 const logicalOperatorsRule: TSESLint.RuleModule<MessageIds> = {
   defaultOptions: [],
@@ -12,15 +12,15 @@ const logicalOperatorsRule: TSESLint.RuleModule<MessageIds> = {
     },
     fixable: "code",
     messages: {
-      avoidLogicalOperatorsInWhere: "TODO",
+      noLogicalOperatorsInWhere: "TODO",
     },
     schema: [],
   },
   create(context) {
-    function fail(node: any) {
+    function error(node: any) {
       context.report({
         node,
-        messageId: "avoidLogicalOperatorsInWhere",
+        messageId: "noLogicalOperatorsInWhere",
       });
     }
     return {
@@ -29,10 +29,10 @@ const logicalOperatorsRule: TSESLint.RuleModule<MessageIds> = {
           if (node.callee.property.type === "Identifier") {
             if (node.callee.property.name === "where") {
               if (node.arguments[0]?.type === "LogicalExpression") {
-                fail(node);
+                error(node);
               }
               if (node.arguments[0]?.type === "BinaryExpression") {
-                fail(node);
+                error(node);
               }
             }
           }
