@@ -51,6 +51,27 @@ ruleTester.run("my-rule", myRule, {
       code: "db.select().from(t_other_thing).where({} & {})",
       errors: [{ messageId: "noLogicalOperatorsInWhere" }],
     },
+
+    {
+      code: "db.select().from(t_other_thing).where(a > b)",
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
+    },
+    {
+      code: "db.select().from(t_other_thing).where(a < b)",
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
+    },
+    {
+      code: "db.select().from(t_other_thing).where(a == b)",
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
+    },
+    {
+      code: "db.select().from(t_other_thing).where(a >= b)",
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
+    },
+    {
+      code: "db.select().from(t_other_thing).where(a <= b)",
+      errors: [{ messageId: "noLogicalOperatorsInWhere" }],
+    },
     {
       code: "db.select().from(t_stored_stuff).where({} | {})",
       errors: [{ messageId: "noLogicalOperatorsInWhere" }],
